@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser = "http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    >
+
+  <!-- defines the direct router directive -->
+  <include package="Products.ZenUtils.extdirect.zope" file="meta.zcml"/>
+  <browser:directRouter
+        name="deletedevices_router"
+        for="*"
+        class=".router.DeleteDevicesRouter"
+        namespace="Zenoss.remote"
+        permission="zenoss.Common"
+        />
+
+    <adapter
+        name="deletedevices"
+        provides=".facade.IDeleteDevicesFacade"
+        for="*"
+        factory=".facade.DeleteDevicesFacade"
+        />
+
+</configure>
